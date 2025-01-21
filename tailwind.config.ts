@@ -7,10 +7,18 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    darkMode: "class",
     extend: {
+      fontFamily: {
+        sans: ["Oswald"],
+        accent: ["Uncial Antiqua"],
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        "tabletop-red": "#DE1601",
+        "tabletop-red-light": "#FF4848",
+        "tabletop-red-dark": "#AC1606",
+        "tabletop-off-white": "#EEEEEE",
+        "tabletop-black": "#141414",
       },
     },
   },
