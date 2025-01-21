@@ -7,23 +7,30 @@
 } from "@tabler/icons-react";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Register - Tabletop Central",
+  description: "Register for Tabletop Central",
+};
+
 export default function Login() {
   return (
     <main
       className={`flex flex-col items-center justify-center w-full min-h-screen bg-tabletop-off-white dark:bg-tabletop-black`}
     >
       <section
-        className={`flex-grow max-h-[600px] grid grid-cols-2 w-full max-w-[900px] bg-tabletop-red rounded-xl overflow-hidden`}
+        className={`flex-grow max-h-[600px] grid md:grid-cols-2 w-full max-w-[900px] bg-tabletop-red md:rounded-xl overflow-hidden transition-all duration-300 ease-in-out`}
       >
         <article
-          className={`bg-tabletop-black`}
+          className={`hidden md:block bg-tabletop-black`}
           style={{
             backgroundImage: "url(/maugrim-poster-art.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         ></article>
-        <article className={`p-12 relative flex flex-col justify-center`}>
+        <article
+          className={`p-6 sm:p-12 relative flex flex-col justify-center transition-all duration-300 ease-in-out`}
+        >
           <h1
             className={`font-sans font-bold uppercase text-tabletop-off-white text-4xl`}
           >
