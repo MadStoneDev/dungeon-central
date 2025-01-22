@@ -14,7 +14,7 @@ export const metadata = {
 export default function Login() {
   return (
     <main
-      className={`flex flex-col items-center justify-center w-full min-h-screen bg-tabletop-off-white dark:bg-tabletop-black`}
+      className={`flex flex-col items-center justify-center w-full min-h-dvh bg-tabletop-off-white dark:bg-tabletop-black`}
     >
       <section
         className={`flex-grow md:max-h-[600px] grid md:grid-cols-2 w-full max-w-[900px] bg-tabletop-red md:rounded-xl overflow-hidden transition-all duration-300 ease-in-out`}
