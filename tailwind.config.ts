@@ -14,6 +14,8 @@ export default {
         accent: ["Uncial Antiqua"],
       },
       colors: {
+        "tabletop-green": "#65A533",
+        "tabletop-green-dark": "#4D8E23",
         "tabletop-red": "#DE1601",
         "tabletop-red-light": "#FF4848",
         "tabletop-red-dark": "#AC1606",
