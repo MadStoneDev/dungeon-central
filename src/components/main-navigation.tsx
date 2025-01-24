@@ -5,116 +5,98 @@ import { useState } from "react";
 import {
   IconCampfire,
   IconMapRoute,
+  IconMoon,
   IconSettings,
-  IconUser,
+  IconSun,
 } from "@tabler/icons-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 export default function MainNavigation() {
-  // States
-  const [activeItem, setActiveItem] = useState(0);
-  const [showCampaigns, setShowCampaigns] = useState(false);
+  // Hooks
+  const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
 
   // Functions
-  const handleNavigation = (item: number) => {
-    setActiveItem(item);
-    setShowCampaigns(item === 1);
+  const isActive = (path: string) => {
+    if (path === "/") return pathname === path;
+    return pathname?.startsWith(path);
   };
+
+  // States
+  const [showCampaigns, setShowCampaigns] = useState(isActive("/campaign"));
 
   return (
     <nav
-      className={`relative flex flex-row items-center gap-2 w-[115px] transition-all duration-300 ease-in-out`}
+      className={`relative flex flex-row items-center gap-2 ${showCampaigns ? "w-[120px]" : "w-[60px]"} transition-all duration-300 ease-in-out`}
     >
       <section
         className={`px-1.5 py-2 flex flex-col items-center gap-4 bg-tabletop-green rounded-full text-white transition-all duration-300 ease-in-out z-50`}
       >
-        <button
-          type="button"
+        <Link
+          href={`/campfire`}
           className={`grid place-content-center min-w-10 min-h-10 ${
-            activeItem === 0 ? "bg-tabletop-green-dark" : ""
+            isActive("/campfire") ? "bg-tabletop-green-dark" : ""
           } rounded-full transition-all duration-300 ease-in-out`}
-          onClick={() => handleNavigation(0)}
+          onClick={() => setShowCampaigns(false)}
         >
           <IconCampfire size={26} />
-        </button>
+        </Link>
 
         <button
           type="button"
           className={`grid place-content-center min-w-10 min-h-10 ${
-            activeItem === 1 ? "bg-tabletop-green-dark" : ""
+            isActive("/campaign") ? "bg-tabletop-green-dark" : ""
           } rounded-full transition-all duration-300 ease-in-out`}
-          onClick={() => handleNavigation(1)}
+          onClick={() => setShowCampaigns(!showCampaigns)}
         >
           <IconMapRoute size={26} />
         </button>
 
-        <button
-          type="button"
+        <Link
+          href={`/settings`}
           className={`grid place-content-center min-w-10 min-h-10 ${
-            activeItem === 2 ? "bg-tabletop-green-dark" : ""
+            isActive("/settings") ? "bg-tabletop-green-dark" : ""
           } rounded-full transition-all duration-300 ease-in-out`}
-          onClick={() => handleNavigation(2)}
+          onClick={() => setShowCampaigns(false)}
         >
-          <IconUser size={26} />
-        </button>
+          <IconSettings size={26} />
+        </Link>
 
         <button
           type="button"
-          className={`grid place-content-center min-w-10 min-h-10 ${
-            activeItem === 3 ? "bg-tabletop-green-dark" : ""
-          } rounded-full transition-all duration-300 ease-in-out`}
-          onClick={() => handleNavigation(3)}
+          className={`-mt-1 grid place-content-center min-w-8 min-h-8 rounded-full transition-all duration-300 ease-in-out`}
+          onClick={() =>
+            setTheme((theme) => (theme === "dark" ? "light" : "dark"))
+          }
         >
-          <IconSettings size={26} />
+          <IconSun size={26} className={`hidden dark:block`} />
+          <IconMoon size={22} className={`block dark:hidden`} />
         </button>
       </section>
 
       <section
         className={`absolute ${
           showCampaigns ? "left-[60px] max-h-[999px]" : "left-0 max-h-0"
-        } px-1.5 py-2 flex flex-col items-center gap-4 bg-tabletop-black dark:bg-white rounded-full text-white transition-all duration-300 ease-in-out overflow-hidden`}
+        } px-1.5 py-2 flex flex-col items-center gap-4 bg-tabletop-black dark:bg-white rounded-full transition-all duration-300 ease-in-out overflow-hidden`}
       >
-        <button
-          type="button"
-          className={`grid place-content-center min-w-10 min-h-10 bg-tabletop-green-dark rounded-full`}
-        >
-          <IconMapRoute size={26} />
-        </button>
-
-        <button
-          type="button"
-          className={`grid place-content-center min-w-10 min-h-10 bg-tabletop-green-dark rounded-full`}
-        >
-          <IconMapRoute size={26} />
-        </button>
-
-        <button
-          type="button"
-          className={`grid place-content-center min-w-10 min-h-10 bg-tabletop-green-dark rounded-full`}
-        >
-          <IconMapRoute size={26} />
-        </button>
-
-        <button
-          type="button"
-          className={`grid place-content-center min-w-10 min-h-10 bg-tabletop-green-dark rounded-full`}
-        >
-          <IconMapRoute size={26} />
-        </button>
-
-        <button
-          type="button"
-          className={`grid place-content-center min-w-10 min-h-10 bg-tabletop-green-dark rounded-full`}
-        >
-          <IconMapRoute size={26} />
-        </button>
-
-        <button
-          type="button"
-          className={`grid place-content-center min-w-10 min-h-10 bg-tabletop-green-dark rounded-full`}
-        >
-          <IconMapRoute size={26} />
-        </button>
+        {Array.from({ length: 5 }).map((campaign, index) => {
+          return (
+            <Link
+              key={`campaign-${index}`}
+              href={`/campaign/campaign-${index}`}
+              type="button"
+              className={`grid place-content-center min-w-10 min-h-10 ${
+                isActive(`/campaign/campaign-${index}`)
+                  ? "bg-tabletop-off-white dark:bg-tabletop-black text-tabletop-black dark:text-tabletop-off-white"
+                  : "text-white dark:text-tabletop-black"
+              } rounded-full`}
+            >
+              <IconMapRoute size={26} />
+            </Link>
+          );
+        })}
       </section>
     </nav>
   );
