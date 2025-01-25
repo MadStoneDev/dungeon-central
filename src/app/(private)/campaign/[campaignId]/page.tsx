@@ -10,7 +10,21 @@ export default async function SingleCampaign({
   return (
     <div className={`flex h-full`}>
       <section className={`flex-1`}>Single Campaign: {campaignId}</section>
-      <CampaignSidebar />
+      <CampaignSidebar
+        hp={32}
+        hpMax={42}
+        ac={16}
+        prof={2}
+        init={10}
+        perc={10}
+        speed={30}
+        str={16}
+        dex={12}
+        con={10}
+        int={8}
+        cha={12}
+        wis={14}
+      />
     </div>
   );
 }
