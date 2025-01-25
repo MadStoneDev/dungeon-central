@@ -1,3 +1,5 @@
+import CampaignSidebar from "@/components/campaign-sidebar";
+
 export default async function SingleCampaign({
   params,
 }: {
@@ -5,5 +7,10 @@ export default async function SingleCampaign({
 }) {
   const campaignId = (await params).campaignId;
 
-  return <div>Single Campaign: {campaignId}</div>;
+  return (
+    <div className={`flex h-full`}>
+      <section className={`flex-1`}>Single Campaign: {campaignId}</section>
+      <CampaignSidebar />
+    </div>
+  );
 }

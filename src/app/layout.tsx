@@ -1,7 +1,27 @@
 import type { Metadata } from "next";
-import { Oswald, Uncial_Antiqua } from "next/font/google";
+
 import "./globals.css";
+
+import {
+  Alegreya,
+  Averia_Serif_Libre,
+  Oswald,
+  Uncial_Antiqua,
+} from "next/font/google";
+
 import { ThemeProvider } from "@/components/theme-provider";
+
+const alegreya = Alegreya({
+  variable: "--font-alegreya",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
+
+const averiaSerifLibre = Averia_Serif_Libre({
+  variable: "--font-averia-serif-libre",
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+});
 
 const oswald = Oswald({
   variable: "--font-oswald",

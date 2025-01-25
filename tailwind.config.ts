@@ -11,6 +11,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Oswald"],
+        serif: ["Alegreya"],
+        averia: ["Averia Serif Libre"],
         accent: ["Uncial Antiqua"],
       },
       colors: {
