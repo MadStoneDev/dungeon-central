@@ -111,7 +111,7 @@ export default function CampaignSidebar({
       >
         <aside className={`mr-2 h-full rounded-3xl overflow-hidden`}>
           <div
-            className={`simple-scrollbar px-2 py-4 ${autohideBar ? "mr-4" : "md:mr-0"} flex flex-col gap-4 items-center h-full bg-white dark:bg-neutral-700/75 w-[300px] ${hoverSidebar ? "w-[300px]" : "md:w-[120px]"} overflow-y-auto transition-all duration-300 ease-in-out`}
+            className={`simple-scrollbar px-2 py-4 ${autohideBar ? "mr-4" : "md:mr-0"} flex flex-col gap-4 items-center h-full bg-white dark:bg-neutral-700/75 w-[300px] ${hoverSidebar ? "w-[300px]" : "md:w-[120px]"} overflow-y-auto overflow-x-hidden transition-all duration-300 ease-in-out`}
           >
             {/* Avatar */}
             <article
