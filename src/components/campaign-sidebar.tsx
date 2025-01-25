@@ -53,15 +53,47 @@ export default function CampaignSidebar({
   // States
   const [autohideBar, setAutohideBar] = useState(true);
   const [hoverSidebar, setHoverSidebar] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  // Functions
+  const toggleSidebar = () => {
+    if (autohideBar) {
+      openSidebar();
+    } else {
+      closeSidebar();
+    }
+  };
+
+  const openSidebar = () => {
+    setAutohideBar(false);
+
+    setTimeout(() => {
+      setShowOverlay(true);
+    }, 300);
+  };
+
+  const closeSidebar = () => {
+    setShowOverlay(false);
+
+    setTimeout(() => {
+      setAutohideBar(true);
+    }, 300);
+  };
 
   return (
     <section
-      className={`py-4 ${autohideBar ? (hoverSidebar ? "fixed top-0 bottom-0 right-0" : "fixed top-0 bottom-0 right-0 translate-x-[90%]") : "relative h-full"} transition-all duration-300 ease-in-out`}
+      className={`${autohideBar ? (hoverSidebar ? "py-2 md:py-4 fixed top-0 bottom-0 right-0 translate-x-full md:translate-x-0" : "py-2 md:py-4 fixed top-0 bottom-0 right-0 translate-x-full md:translate-x-[90%]") : "py-2 md:py-0 fixed md:relative h-full top-0 md:top-auto right-0 md:right-auto"} z-50 transition-all duration-300 ease-in-out`}
     >
+      {/* Overlay */}
+      <div
+        className={`md:hidden fixed top-0 right-0 h-full ${autohideBar ? "hidden w-0 bg-transparent" : `w-full ${showOverlay && "bg-black/20"}`} z-0 transition-all duration-300 ease-in-out`}
+        onClick={() => closeSidebar()}
+      />
+
       {/* Show Toggle*/}
       <button
         className={`absolute top-1/2 left-0 -translate-x-[110%] grid place-content-center w-7 h-8`}
-        onClick={() => setAutohideBar(!autohideBar)}
+        onClick={() => toggleSidebar()}
       >
         <IconCircleChevronLeftFilled
           className={`${autohideBar ? "rotate-0" : "-rotate-180"} transition-all duration-300 ease-in-out`}
@@ -75,7 +107,7 @@ export default function CampaignSidebar({
         onPointerLeave={() => setHoverSidebar(false)}
       >
         <aside
-          className={`p-2 ${autohideBar && "mr-4"} flex flex-col gap-4 items-center h-full bg-white dark:bg-neutral-700/75 rounded-3xl w-[120px] ${hoverSidebar && "w-[300px]"} transition-all duration-300 ease-in-out`}
+          className={`px-2 py-4 mr-2 ${autohideBar ? "mr-4" : "md:mr-0"} flex flex-col gap-4 items-center h-full bg-white dark:bg-neutral-700/75 rounded-3xl w-[300px] ${hoverSidebar ? "w-[300px]" : "md:w-[120px]"} transition-all duration-300 ease-in-out`}
         >
           {/* Avatar */}
           <article
@@ -149,7 +181,7 @@ export default function CampaignSidebar({
 
           {/* Stats */}
           <article
-            className={`mt-4 grid ${hoverSidebar ? "grid-cols-6" : "grid-cols-2"} gap-y-4 w-full font-serif text-xl font-bold transition-all duration-300 ease-in-out`}
+            className={`mt-4 grid ${hoverSidebar ? "grid-cols-6" : "grid-cols-6 md:grid-cols-2"} gap-y-4 w-full font-serif text-xl font-bold transition-all duration-300 ease-in-out`}
           >
             {/* Strength */}
             <section
