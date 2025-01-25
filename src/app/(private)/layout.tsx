@@ -7,10 +7,10 @@ export default function AuthenticatedLayout({
 }) {
   return (
     <div
-      className={`flex-grow p-3 flex flex-row items-center w-full h-dvh bg-tabletop-off-white dark:bg-tabletop-black`}
+      className={`relative flex-grow p-3 flex flex-col-reverse md:flex-row items-center w-full h-dvh bg-tabletop-off-white dark:bg-tabletop-black overflow-hidden`}
     >
       <MainNavigation />
-      {children}
+      <main className={`flex-1 w-full h-full overflow-y-auto`}>{children}</main>
     </div>
   );
 }

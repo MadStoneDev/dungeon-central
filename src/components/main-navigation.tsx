@@ -16,7 +16,7 @@ import { useTheme } from "next-themes";
 export default function MainNavigation() {
   // Hooks
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
 
   // Functions
   const isActive = (path: string) => {
@@ -29,10 +29,10 @@ export default function MainNavigation() {
 
   return (
     <nav
-      className={`relative flex flex-row items-center gap-2 ${showCampaigns ? "w-[120px]" : "w-[60px]"} transition-all duration-300 ease-in-out`}
+      className={`flex flex-row items-center gap-2 ${showCampaigns ? "md:w-[120px]" : "md:w-[60px]"} transition-all duration-300 ease-in-out`}
     >
       <section
-        className={`px-1.5 py-2 flex flex-col items-center gap-4 bg-tabletop-green rounded-full text-white transition-all duration-300 ease-in-out z-50`}
+        className={`px-1.5 py-2 flex flex-row md:flex-col items-center gap-4 bg-tabletop-green rounded-full text-white transition-all duration-300 ease-in-out z-50`}
       >
         <Link
           href={`/campfire`}
@@ -77,8 +77,10 @@ export default function MainNavigation() {
       </section>
 
       <section
-        className={`absolute ${
-          showCampaigns ? "left-[60px] max-h-[999px]" : "left-0 max-h-0"
+        className={`absolute top-1/2 -translate-y-1/2 ${
+          showCampaigns
+            ? "left-3 md:left-[72px] md:max-w-[120px] md:max-h-[999px]"
+            : "-left-[100px] md:left-3 md:max-w-0 md:max-h-0"
         } px-1.5 py-2 flex flex-col items-center gap-4 bg-tabletop-black dark:bg-white rounded-full transition-all duration-300 ease-in-out overflow-hidden`}
       >
         {Array.from({ length: 5 }).map((campaign, index) => {
