@@ -12,10 +12,13 @@ import {
 } from "lucide-react";
 
 import {
+  IconBoltFilled,
   IconCircleChevronLeft,
   IconCircleChevronLeftFilled,
+  IconDashboardFilled,
   IconDiamondFilled,
   IconEyeFilled,
+  IconRun,
   IconShieldFilled,
 } from "@tabler/icons-react";
 
@@ -102,171 +105,332 @@ export default function CampaignSidebar({
 
       {/* Sidebar */}
       <div
-        className={`relative h-full`}
+        className={`relative h-full overflow-hidden`}
         onPointerEnter={() => setHoverSidebar(true)}
         onPointerLeave={() => setHoverSidebar(false)}
       >
-        <aside
-          className={`px-2 py-4 mr-2 ${autohideBar ? "mr-4" : "md:mr-0"} flex flex-col gap-4 items-center h-full bg-white dark:bg-neutral-700/75 rounded-3xl w-[300px] ${hoverSidebar ? "w-[300px]" : "md:w-[120px]"} transition-all duration-300 ease-in-out`}
-        >
-          {/* Avatar */}
-          <article
-            className={`w-full max-w-[90px] aspect-square border-[5px] border-tabletop-off-white rounded-full bg-tabletop-off-white dark:bg-tabletop-black overflow-hidden`}
-          ></article>
-
-          <article
-            className={`w-full font-serif font-extrabold text-tabletop-green text-center overflow-hidden`}
-            style={{
-              lineHeight: "1.2",
-            }}
+        <aside className={`mr-2 h-full rounded-3xl overflow-hidden`}>
+          <div
+            className={`simple-scrollbar px-2 py-4 ${autohideBar ? "mr-4" : "md:mr-0"} flex flex-col gap-4 items-center h-full bg-white dark:bg-neutral-700/75 w-[300px] ${hoverSidebar ? "w-[300px]" : "md:w-[120px]"} overflow-y-auto transition-all duration-300 ease-in-out`}
           >
-            Maugrim Dragonclaw
-          </article>
+            {/* Avatar */}
+            <article
+              className={`w-[90px] h-[90px] min-h-[90px] border-[5px] border-tabletop-off-white rounded-full bg-tabletop-off-white dark:bg-tabletop-black overflow-hidden`}
+            ></article>
 
-          <article className={`mt-2 flex flex-col items-center gap-1 w-full`}>
-            <section
-              className={`relative h-3 w-full max-w-[150px] bg-tabletop-off-white rounded-full overflow-hidden border border-tabletop-black`}
+            <article
+              className={`w-full font-serif font-extrabold text-tabletop-green text-center overflow-hidden`}
+              style={{
+                lineHeight: "1.2",
+              }}
             >
-              <div
-                className={`absolute top-0 left-0 bottom-0 bg-tabletop-green transition-all duration-300 ease-in-out`}
-                style={{
-                  width: hp && hpMax && `${(hp * 100) / hpMax}%`,
-                }}
-              ></div>
-            </section>
+              Maugrim Dragonclaw
+            </article>
 
-            {hp && hpMax && (
+            <article className={`mt-2 flex flex-col items-center gap-1 w-full`}>
               <section
-                className={`flex items-center gap-2 font-serif font-medium`}
+                className={`relative h-3 w-full max-w-[150px] bg-tabletop-off-white rounded-full overflow-hidden border border-tabletop-black`}
               >
-                <span className={`text-sm text-tabletop-green`}>HP:</span>
-                <p>
-                  <span>{hp}</span> / {hpMax}
-                </p>
+                <div
+                  className={`absolute top-0 left-0 bottom-0 bg-tabletop-green transition-all duration-300 ease-in-out`}
+                  style={{
+                    width: hp && hpMax && `${(hp * 100) / hpMax}%`,
+                  }}
+                ></div>
               </section>
-            )}
-          </article>
 
-          {/* Main Stats */}
-          <article
-            className={`mt-4 grid grid-cols-3 w-full max-w-[200px] font-serif text-xl font-bold transition-all duration-300 ease-in-out`}
-          >
-            {/* Armor Class */}
-            <section
-              className={`flex flex-col items-center gap-0 w-full`}
-              title={`Armor Class`}
-            >
-              <IconShieldFilled size={25} />
-              <span>{ac}</span>
-            </section>
-
-            {/* Proficiency Bonus */}
-            <section
-              className={`flex flex-col items-center gap-0 w-full`}
-              title={`Initiative`}
-            >
-              <IconDiamondFilled size={26} />
-              <span>{prof}</span>
-            </section>
-
-            {/* Passive Perception */}
-            <section
-              className={`flex flex-col items-center gap-0 w-full`}
-              title={`Passive Perception`}
-            >
-              <IconEyeFilled size={26} />
-              {perc}
-            </section>
-          </article>
-
-          {/* Stats */}
-          <article
-            className={`mt-4 grid ${hoverSidebar ? "grid-cols-6" : "grid-cols-6 md:grid-cols-2"} gap-y-4 w-full font-serif text-xl font-bold transition-all duration-300 ease-in-out`}
-          >
-            {/* Strength */}
-            <section
-              className={`flex flex-col items-center gap-0 w-full`}
-              title={`Strength`}
-            >
-              <BicepsFlexed />
-              {str && (
-                <span>
-                  {str > 11 && `+`}
-                  {Math.floor((str - 10) / 2)}
-                </span>
+              {hp && hpMax && (
+                <section
+                  className={`flex items-center gap-2 font-serif font-medium`}
+                >
+                  <span className={`text-sm text-tabletop-green`}>HP:</span>
+                  <p>
+                    <span>{hp}</span> / {hpMax}
+                  </p>
+                </section>
               )}
-            </section>
+            </article>
 
-            {/* Dexterity */}
-            <section
-              className={`flex flex-col items-center gap-0 w-full`}
-              title={`Dexterity`}
+            {/* Main Stats */}
+            <article
+              className={`grid ${hoverSidebar ? "grid-cols-5" : "grid-cols-5 md:grid-cols-3"} w-full max-w-[230px] font-serif text-xl font-bold transition-all duration-300 ease-in-out`}
             >
-              <Footprints />
-              {dex && (
-                <span>
-                  {dex > 11 && `+`}
-                  {Math.floor((dex - 10) / 2)}
-                </span>
-              )}
-            </section>
+              {/* Armor Class */}
+              <section
+                className={`flex flex-col items-center gap-0 w-full`}
+                title={`Armor Class`}
+              >
+                <IconShieldFilled size={25} />
+                <span>{ac}</span>
+              </section>
 
-            {/* Constitution */}
-            <section
-              className={`flex flex-col items-center gap-0 w-full`}
-              title={`Constitution`}
-            >
-              <HeartPulse />
-              {con && (
-                <span>
-                  {con > 11 && `+`}
-                  {Math.floor((con - 10) / 2)}
-                </span>
-              )}
-            </section>
+              {/* Proficiency Bonus */}
+              <section
+                className={`flex flex-col items-center gap-0 w-full`}
+                title={`Initiative`}
+              >
+                <IconDiamondFilled size={26} />
+                <span>{prof}</span>
+              </section>
 
-            {/*  Intelligence */}
-            <section
-              className={`flex flex-col items-center gap-0 w-full`}
-              title={`Intelligence`}
-            >
-              <Brain />
-              {int && (
-                <span>
-                  {int > 11 && `+`}
-                  {Math.floor((int - 10) / 2)}
-                </span>
-              )}
-            </section>
+              {/* Passive Perception */}
+              <section
+                className={`flex flex-col items-center gap-0 w-full`}
+                title={`Passive Perception`}
+              >
+                <IconEyeFilled size={26} />
+                {perc}
+              </section>
 
-            {/* Wisdom */}
-            <section
-              className={`flex flex-col items-center gap-0 w-full`}
-              title={`Wisdom`}
-            >
-              <Scale />
-              {wis && (
-                <span>
-                  {wis > 11 && `+`}
-                  {Math.floor((wis - 10) / 2)}
-                </span>
-              )}
-            </section>
+              {/* Initiative */}
+              <section
+                className={`${!hoverSidebar && "md:hidden"} flex flex-col items-center gap-0 w-full`}
+                title={`Passive Perception`}
+              >
+                <IconBoltFilled size={26} />
+                {init}
+              </section>
 
-            {/* Charisma */}
-            <section
-              className={`flex flex-col items-center gap-0 w-full`}
-              title={`Charisma`}
+              {/* Speed */}
+              <section
+                className={`${!hoverSidebar && "md:hidden"} flex flex-col items-center gap-0 w-full`}
+                title={`Passive Perception`}
+              >
+                <IconDashboardFilled size={26} />
+                {speed}
+              </section>
+            </article>
+
+            {/* Separator */}
+            <div
+              className={`h-[1px] w-full bg-tabletop-black/20 rounded-full`}
+            ></div>
+
+            {/* Stats */}
+            <article
+              className={`grid ${hoverSidebar ? "grid-cols-6" : "grid-cols-6 md:grid-cols-2"} gap-y-4 w-full font-serif text-xl font-bold transition-all duration-300 ease-in-out`}
             >
-              <MessageCircleHeart />
-              {cha && (
-                <span>
-                  {cha > 11 && `+`}
-                  {Math.floor((cha - 10) / 2)}
-                </span>
-              )}
-            </section>
-          </article>
+              {/* Strength */}
+              <section
+                className={`flex flex-col items-center gap-0 w-full`}
+                title={`Strength`}
+              >
+                <BicepsFlexed />
+                {str && (
+                  <span>
+                    {str > 11 && `+`}
+                    {Math.floor((str - 10) / 2)}
+                  </span>
+                )}
+              </section>
+
+              {/* Dexterity */}
+              <section
+                className={`flex flex-col items-center gap-0 w-full`}
+                title={`Dexterity`}
+              >
+                <Footprints />
+                {dex && (
+                  <span>
+                    {dex > 11 && `+`}
+                    {Math.floor((dex - 10) / 2)}
+                  </span>
+                )}
+              </section>
+
+              {/* Constitution */}
+              <section
+                className={`flex flex-col items-center gap-0 w-full`}
+                title={`Constitution`}
+              >
+                <HeartPulse />
+                {con && (
+                  <span>
+                    {con > 11 && `+`}
+                    {Math.floor((con - 10) / 2)}
+                  </span>
+                )}
+              </section>
+
+              {/*  Intelligence */}
+              <section
+                className={`flex flex-col items-center gap-0 w-full`}
+                title={`Intelligence`}
+              >
+                <Brain />
+                {int && (
+                  <span>
+                    {int > 11 && `+`}
+                    {Math.floor((int - 10) / 2)}
+                  </span>
+                )}
+              </section>
+
+              {/* Wisdom */}
+              <section
+                className={`flex flex-col items-center gap-0 w-full`}
+                title={`Wisdom`}
+              >
+                <Scale />
+                {wis && (
+                  <span>
+                    {wis > 11 && `+`}
+                    {Math.floor((wis - 10) / 2)}
+                  </span>
+                )}
+              </section>
+
+              {/* Charisma */}
+              <section
+                className={`flex flex-col items-center gap-0 w-full`}
+                title={`Charisma`}
+              >
+                <MessageCircleHeart />
+                {cha && (
+                  <span>
+                    {cha > 11 && `+`}
+                    {Math.floor((cha - 10) / 2)}
+                  </span>
+                )}
+              </section>
+            </article>
+
+            {/* Separator */}
+            <div
+              className={`${!hoverSidebar && "md:hidden"} h-[1px] w-full bg-tabletop-black/20 rounded-full`}
+            ></div>
+
+            {/* Extra Info */}
+            <article
+              className={`${!hoverSidebar && "md:hidden"} px-2 grid grid-cols-1 md:grid-cols-2 gap-2 w-full font-light text-sm`}
+            >
+              {/* Strength */}
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Athletics</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+
+              {/* Dexterity */}
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Acrobatics</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Sleight of Hand</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Stealth</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+
+              {/* Constitution */}
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Saving Throw</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+
+              {/*  Intelligence */}
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Arcana</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>History</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Investigation</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Nature</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Religion</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+
+              {/* Wisdom */}
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Animal Handling</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Insight</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Medicine</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Perception</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Survival</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+
+              {/* Charisma */}
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Deception</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Intimidation</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Performance</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+              <section
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+              >
+                <span>Persuasion</span>
+                <span className={`font-serif font-bold`}>+2</span>
+              </section>
+            </article>
+          </div>
         </aside>
       </div>
     </section>
