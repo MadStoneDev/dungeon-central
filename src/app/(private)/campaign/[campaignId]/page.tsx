@@ -1,4 +1,5 @@
 import CampaignSidebar from "@/components/campaign-sidebar";
+import TopNavigation from "@/components/top-navigation";
 
 export default async function SingleCampaign({
   params,
@@ -9,7 +10,10 @@ export default async function SingleCampaign({
 
   return (
     <div className={`flex h-full`}>
-      <section className={`flex-1`}>Single Campaign: {campaignId}</section>
+      <section className={`relative flex-1`}>
+        <TopNavigation />
+        Single Campaign: {campaignId}
+      </section>
       <CampaignSidebar
         hp={32}
         hpMax={42}

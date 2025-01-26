@@ -29,7 +29,9 @@ export default function MainNavigation() {
 
   return (
     <nav
-      className={`flex flex-row items-center gap-2 ${showCampaigns ? "md:w-[120px]" : "md:w-[60px]"} transition-all duration-300 ease-in-out`}
+      className={`flex flex-row items-center gap-2 ${
+        showCampaigns ? "md:w-[120px]" : "md:w-[60px]"
+      } transition-all duration-300 ease-in-out`}
     >
       <section
         className={`px-1.5 py-2 flex flex-row md:flex-col items-center gap-4 h-14 md:h-auto bg-tabletop-green rounded-full text-white transition-all duration-300 ease-in-out z-50`}
@@ -66,7 +68,7 @@ export default function MainNavigation() {
 
         <button
           type="button"
-          className={`-mt-2 grid place-content-center min-w-10 min-h-10 rounded-full transition-all duration-300 ease-in-out`}
+          className={`md:-mt-2 grid place-content-center min-w-10 min-h-10 rounded-full transition-all duration-300 ease-in-out`}
           onClick={() =>
             setTheme((theme) => (theme === "dark" ? "light" : "dark"))
           }
