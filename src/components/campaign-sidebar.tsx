@@ -109,9 +109,11 @@ export default function CampaignSidebar({
         onPointerEnter={() => setHoverSidebar(true)}
         onPointerLeave={() => setHoverSidebar(false)}
       >
-        <aside className={`mr-2 h-full rounded-3xl overflow-hidden`}>
+        <aside
+          className={`${!autohideBar && "rounded-r-3xl"} h-full rounded-l-3xl overflow-hidden`}
+        >
           <div
-            className={`simple-scrollbar px-2 py-4 ${autohideBar ? "mr-4" : "md:mr-0"} flex flex-col gap-4 items-center h-full bg-white dark:bg-neutral-700/75 w-[300px] ${hoverSidebar ? "w-[300px]" : "md:w-[120px]"} overflow-y-auto overflow-x-hidden transition-all duration-300 ease-in-out`}
+            className={`simple-scrollbar px-2 py-4 ${autohideBar ? "mr-0" : "md:mr-0"} flex flex-col gap-4 items-center h-full bg-white dark:bg-neutral-700/75 w-[300px] ${hoverSidebar ? "w-[300px]" : "md:w-[120px]"} overflow-y-auto overflow-x-hidden transition-all duration-300 ease-in-out`}
           >
             {/* Avatar */}
             <article
@@ -306,7 +308,7 @@ export default function CampaignSidebar({
             >
               {/* Strength */}
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Athletics</span>
                 <span className={`font-serif font-bold`}>+2</span>
@@ -314,19 +316,19 @@ export default function CampaignSidebar({
 
               {/* Dexterity */}
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Acrobatics</span>
                 <span className={`font-serif font-bold`}>+2</span>
               </section>
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Sleight of Hand</span>
                 <span className={`font-serif font-bold`}>+2</span>
               </section>
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Stealth</span>
                 <span className={`font-serif font-bold`}>+2</span>
@@ -334,7 +336,7 @@ export default function CampaignSidebar({
 
               {/* Constitution */}
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Saving Throw</span>
                 <span className={`font-serif font-bold`}>+2</span>
@@ -342,31 +344,31 @@ export default function CampaignSidebar({
 
               {/*  Intelligence */}
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Arcana</span>
                 <span className={`font-serif font-bold`}>+2</span>
               </section>
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>History</span>
                 <span className={`font-serif font-bold`}>+2</span>
               </section>
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Investigation</span>
                 <span className={`font-serif font-bold`}>+2</span>
               </section>
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Nature</span>
                 <span className={`font-serif font-bold`}>+2</span>
               </section>
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Religion</span>
                 <span className={`font-serif font-bold`}>+2</span>
@@ -374,31 +376,31 @@ export default function CampaignSidebar({
 
               {/* Wisdom */}
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Animal Handling</span>
                 <span className={`font-serif font-bold`}>+2</span>
               </section>
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Insight</span>
                 <span className={`font-serif font-bold`}>+2</span>
               </section>
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Medicine</span>
                 <span className={`font-serif font-bold`}>+2</span>
               </section>
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Perception</span>
                 <span className={`font-serif font-bold`}>+2</span>
               </section>
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Survival</span>
                 <span className={`font-serif font-bold`}>+2</span>
@@ -406,25 +408,25 @@ export default function CampaignSidebar({
 
               {/* Charisma */}
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Deception</span>
                 <span className={`font-serif font-bold`}>+2</span>
               </section>
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Intimidation</span>
                 <span className={`font-serif font-bold`}>+2</span>
               </section>
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Performance</span>
                 <span className={`font-serif font-bold`}>+2</span>
               </section>
               <section
-                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 rounded-full transition-all duration-300 ease-in-out`}
+                className={`px-2 py-1 flex justify-between bg-tabletop-black/20 hover:bg-tabletop-black/10 dark:bg-tabletop-off-white/10 hover:dark:bg-tabletop-off-white/20 rounded-full transition-all duration-300 ease-in-out`}
               >
                 <span>Persuasion</span>
                 <span className={`font-serif font-bold`}>+2</span>
