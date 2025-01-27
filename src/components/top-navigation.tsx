@@ -10,15 +10,18 @@ export default function TopNavigation() {
 
   return (
     <nav
-      className={`flex flex-row items-center gap-4 transition-all duration-300 ease-in-out`}
+      className={`mb-4 flex flex-row items-center justify-between gap-4 w-full transition-all duration-300 ease-in-out`}
     >
-      {pathname.startsWith("/campaign") && (
-        <section>
-          <IconPicnicTable size={26} />
-        </section>
-      )}
-      <section>
-        <IconBell />
+      <section
+        className={`flex flex-row items-center gap-4 font-serif uppercase font-bold`}
+      >
+        TableTop Central
+      </section>
+
+      <section className={`flex flex-row items-center gap-4`}>
+        <article>
+          <IconBell />
+        </article>
       </section>
     </nav>
   );

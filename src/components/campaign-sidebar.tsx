@@ -105,16 +105,16 @@ export default function CampaignSidebar({
 
   return (
     <section
-      className={`${
+      className={`fixed right-0 ${
         autohideBar
           ? hoverSidebar
-            ? "md:py-4 fixed top-0 bottom-0 right-0 md:translate-x-0"
-            : "md:py-4 fixed top-0 bottom-0 right-0 md:translate-x-[90%]"
+            ? "md:py-4 top-0 bottom-0 right-0 md:translate-x-0"
+            : "md:py-4 top-0 bottom-0 right-0 md:translate-x-[90%]"
           : "md:py-0 md:relative h-full top-0 md:top-auto md:right-auto"
       }
        ${
          showSidebarOnMobile
-           ? "py-2 md:py-0 fixed md:relative h-full top-0 right-0"
+           ? "py-2 md:py-0 md:relative h-full top-0"
            : "py-2 translate-x-full md:translate-x-0"
        } z-50 transition-all duration-300 ease-in-out`}
     >
@@ -154,13 +154,15 @@ export default function CampaignSidebar({
 
       {/* Sidebar */}
       <div
-        className={`relative h-full overflow-hidden`}
+        className={`relative h-full`}
         onPointerEnter={() => setHoverSidebar(true)}
         onPointerLeave={() => setHoverSidebar(false)}
       >
         <aside
           className={`${
-            !autohideBar && "rounded-r-3xl"
+            autohideBar
+              ? "shadow-xl shadow-tabletop-black/30"
+              : "md:rounded-r-3xl"
           } h-full rounded-l-3xl overflow-hidden`}
         >
           <div

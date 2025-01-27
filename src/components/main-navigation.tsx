@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 
+import Link from "next/link";
+import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
+
 import {
   IconCampfire,
   IconMapRoute,
@@ -9,9 +13,6 @@ import {
   IconSettings,
   IconSun,
 } from "@tabler/icons-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
 
 export default function MainNavigation() {
   // Hooks
@@ -30,7 +31,7 @@ export default function MainNavigation() {
   return (
     <nav
       className={`flex flex-row items-center gap-2 ${
-        showCampaigns ? "md:w-[120px]" : "md:w-[60px]"
+        showCampaigns ? "md:w-[112px]" : "md:w-[52px]"
       } transition-all duration-300 ease-in-out`}
     >
       <section
@@ -83,7 +84,7 @@ export default function MainNavigation() {
           showCampaigns
             ? "left-3 md:left-[72px] md:max-w-[120px] md:max-h-[999px]"
             : "-left-[100px] md:left-3 md:max-w-0 md:max-h-0"
-        } px-1.5 py-2 flex flex-col items-center gap-4 bg-tabletop-black dark:bg-white rounded-full transition-all duration-300 ease-in-out overflow-hidden`}
+        } px-1.5 py-2 flex flex-col items-center gap-4 bg-tabletop-black dark:bg-white rounded-full z-40 transition-all duration-300 ease-in-out overflow-hidden`}
       >
         {Array.from({ length: 5 }).map((campaign, index) => {
           return (

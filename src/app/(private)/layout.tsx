@@ -11,7 +11,7 @@ export default function AuthenticatedLayout({
       className={`relative flex-grow p-3 flex flex-col-reverse md:flex-row items-center w-full h-dvh bg-tabletop-off-white dark:bg-tabletop-black overflow-hidden`}
     >
       <MainNavigation />
-      <main className={`relative flex-1 w-full h-full overflow-y-auto`}>
+      <main className={`relative flex-1 w-full h-full overflow-hidden`}>
         {children}
       </main>
     </div>
