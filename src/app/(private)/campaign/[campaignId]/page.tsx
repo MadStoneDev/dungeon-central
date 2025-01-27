@@ -19,14 +19,16 @@ export default async function SingleCampaign({
         <TopNavigation />
 
         {/* Campaign Header */}
-        <section
-          className={`mb-4 p-2 flex items-center justify-between bg-tabletop-black/10 rounded-full`}
-        >
-          <h1 className={`flex items-center gap-2`}>
+        <section className={`mb-4 flex items-center gap-4`}>
+          <h1
+            className={`flex-grow p-2 flex items-center gap-2 bg-tabletop-black/10 rounded-full`}
+          >
             <IconMapRoute /> {campaignId}
           </h1>
 
-          <div>
+          <div
+            className={`grid place-content-center h-full aspect-square bg-tabletop-black/10 rounded-full`}
+          >
             <IconPicnicTable size={26} />
           </div>
         </section>

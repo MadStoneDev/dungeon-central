@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 
 import {
   IconCampfire,
+  IconCirclePlus,
   IconMapRoute,
   IconMoon,
   IconSettings,
@@ -26,7 +27,7 @@ export default function MainNavigation() {
   };
 
   // States
-  const [showCampaigns, setShowCampaigns] = useState(isActive("/campaign"));
+  const [showCampaigns, setShowCampaigns] = useState(false);
 
   return (
     <nav
@@ -102,6 +103,15 @@ export default function MainNavigation() {
             </Link>
           );
         })}
+
+        <Link
+          href={`/create-a-campaign`}
+          type="button"
+          className={`grid place-content-center min-w-10 min-h-10 text-white dark:text-tabletop-black rounded-full`}
+          onClick={() => setShowCampaigns(false)}
+        >
+          <IconCirclePlus size={26} />
+        </Link>
       </section>
     </nav>
   );
