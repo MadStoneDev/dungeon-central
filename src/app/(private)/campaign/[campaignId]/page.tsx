@@ -10,10 +10,18 @@ export default async function SingleCampaign({
 
   return (
     <div className={`flex h-full`}>
+      {/* Main Window */}
       <section className={`relative flex-1`}>
-        <TopNavigation />
-        Single Campaign: {campaignId}
+        {/* Header */}
+        <div className={`px-4 flex items-center justify-between`}>
+          <h1 className={`font-serif text-lg md:text-xl font-black`}>
+            Campaign: {campaignId}
+          </h1>
+          <TopNavigation />
+        </div>
       </section>
+
+      {/* Right Sidebar */}
       <CampaignSidebar
         hp={32}
         hpMax={42}

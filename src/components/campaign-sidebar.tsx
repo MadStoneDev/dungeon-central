@@ -55,16 +55,34 @@ export default function CampaignSidebar({
 }: Stats) {
   // States
   const [autohideBar, setAutohideBar] = useState(false);
+  const [showSidebarOnMobile, setShowSidebarOnMobile] = useState(false);
   const [hoverSidebar, setHoverSidebar] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const [firstLoad, setFirstLoad] = useState(true);
 
   // Functions
+
+  const openSidebar = () => {
+    setShowSidebarOnMobile(true);
+
+    setTimeout(() => {
+      setShowOverlay(true);
+    }, 300);
+  };
+
+  const closeSidebar = () => {
+    setShowOverlay(false);
+
+    setTimeout(() => {
+      setShowSidebarOnMobile(false);
+    }, 300);
+  };
+
   const toggleSidebar = () => {
-    if (autohideBar) {
-      openSidebar();
-    } else {
+    if (showSidebarOnMobile) {
       closeSidebar();
+    } else {
+      openSidebar();
     }
   };
 
@@ -85,50 +103,51 @@ export default function CampaignSidebar({
     }
   }, [autohideBar]);
 
-  const openSidebar = () => {
-    setAutohideBar(false);
-
-    setTimeout(() => {
-      setShowOverlay(true);
-    }, 300);
-  };
-
-  const closeSidebar = () => {
-    setShowOverlay(false);
-
-    setTimeout(() => {
-      setAutohideBar(true);
-    }, 300);
-  };
-
   return (
     <section
       className={`${
         autohideBar
           ? hoverSidebar
-            ? "py-2 md:py-4 fixed top-0 bottom-0 right-0 translate-x-full md:translate-x-0"
-            : "py-2 md:py-4 fixed top-0 bottom-0 right-0 translate-x-full md:translate-x-[90%]"
-          : "py-2 md:py-0 fixed md:relative h-full top-0 md:top-auto right-0 md:right-auto"
-      } z-50 transition-all duration-300 ease-in-out`}
+            ? "md:py-4 fixed top-0 bottom-0 right-0 md:translate-x-0"
+            : "md:py-4 fixed top-0 bottom-0 right-0 md:translate-x-[90%]"
+          : "md:py-0 md:relative h-full top-0 md:top-auto md:right-auto"
+      }
+       ${
+         showSidebarOnMobile
+           ? "py-2 md:py-0 fixed md:relative h-full top-0 right-0"
+           : "py-2 translate-x-full md:translate-x-0"
+       } z-50 transition-all duration-300 ease-in-out`}
     >
       {/* Overlay */}
       <div
-        className={`md:hidden fixed top-0 right-0 h-full ${
-          autohideBar
-            ? "hidden w-0 bg-transparent"
-            : `w-full ${showOverlay && "bg-black/20"}`
+        className={`block md:hidden fixed top-0 right-0 h-full ${
+          showSidebarOnMobile
+            ? `w-full ${showOverlay && "bg-black/20"}`
+            : "hidden w-0 bg-transparent"
         } z-0 transition-all duration-300 ease-in-out`}
         onClick={() => closeSidebar()}
       />
 
-      {/* Show Toggle*/}
+      {/* Show Toggle - DESKTOP */}
       <button
-        className={`absolute top-1/2 left-0 -translate-x-[110%] grid place-content-center w-7 h-8`}
-        onClick={() => toggleSidebar()}
+        className={`absolute top-1/2 left-0 -translate-x-[110%] hidden md:grid place-content-center w-7 h-8`}
+        onClick={() => setAutohideBar(!autohideBar)}
       >
         <IconCircleChevronLeftFilled
           className={`${
             autohideBar ? "rotate-0" : "-rotate-180"
+          } transition-all duration-300 ease-in-out`}
+        />
+      </button>
+
+      {/* Show Toggle - MOBILE */}
+      <button
+        className={`absolute top-1/2 left-0 -translate-x-[110%] grid md:hidden place-content-center w-7 h-8`}
+        onClick={() => toggleSidebar()}
+      >
+        <IconCircleChevronLeftFilled
+          className={`${
+            showSidebarOnMobile ? "-rotate-180" : "rotate-0"
           } transition-all duration-300 ease-in-out`}
         />
       </button>
